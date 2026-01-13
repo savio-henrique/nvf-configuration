@@ -44,13 +44,39 @@
           cmp.enable = true;
         };
 
+        # Languages
         lsp = {
           enable = true;
         };
+        
+        languages = {
+            python.enable = true;
+            nix.enable = true;
+            ts.enable = true;
+            sql.enable = true;
+            markdown.enable = true;
+            html.enable = true;
+            lua.enable = true;
+            php.enable = true;
+            bash.enable = true;
+            css.enable = true;
+            kotlin.enable = true;
+            tailwind.enable = true;
+            terraform.enable = true;
+            yaml.enable = true;
+            typst.enable = true;
+        };
+
 
         options.tabstop = 4;
         options.termguicolors = true;
         options.shiftwidth = 0;
+
+
+        luaConfigRC.keymaps = /* lua */''
+            vim.keymap.set('n', '<leader>v', vim.cmd.vsplit, { desc = "Vertical Split" })
+            vim.keymap.set('n', '<leader>h', vim.cmd.split, { desc = "Horizontal Split" })
+        '';
 
         startPlugins = [
           "base16"
@@ -109,8 +135,8 @@
 
                     vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle File Explorer" })
                 '';
-              };
-              telescope-nvim = {
+            };
+            telescope-nvim = {
                 package = p.telescope-nvim;
                 setup = ''
                     local builtin = require("telescope.builtin")
@@ -121,6 +147,12 @@
                     vim.keymap.set('n', '<leader>ps', function ()
                       builtin.grep_string({search = vim.fn.input("Grep > ") });
                     end, { desc = "Grep for a string using Telescope"})
+                '';
+            };
+            transparent-nvim = {
+                package = p.transparent-nvim;
+                setup = ''
+                    require('transparent').setup({ auto = true })
                 '';
             };
         };
