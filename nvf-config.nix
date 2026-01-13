@@ -33,7 +33,6 @@
             enable = true;
             theme = "base16";
             icons.enable = true;
-
         };
 
         # Enable Treesitter
@@ -42,6 +41,10 @@
         assistant.copilot = {
           enable = true;
           cmp.enable = true;
+          setupOpts = {
+            panel.enabled = true;
+            suggestion.enabled = true;
+          };
         };
 
         # Languages
@@ -154,6 +157,9 @@
                 setup = ''
                     require('transparent').setup({ auto = true })
                 '';
+            };
+            vim-tmux-navigator = {
+                package = p.vim-tmux-navigator;
             };
         };
     };
