@@ -45,6 +45,20 @@
             panel.enabled = true;
             suggestion.enabled = true;
           };
+          mappings = {
+            panel = {
+              open = "cpn";
+            };
+            suggestion = {
+              accept = "cpc";
+            };
+          };
+        };
+
+        # Completion
+        autocomplete.blink-cmp = {
+          enable = true;
+          friendly-snippets.enable = true;
         };
 
         # Languages
